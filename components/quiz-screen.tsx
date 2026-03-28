@@ -2,32 +2,36 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { questions, type DeveloperType } from "@/lib/quiz-data";
-import { ArrowLeft, ChevronRight } from "lucide-react";
+import { questions, type LanguageType } from "@/lib/quiz-data";
+import { ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface QuizScreenProps {
-  onComplete: (answers: DeveloperType[]) => void;
+  onComplete: (answers: LanguageType[][]) => void;
   onBack: () => void;
 }
 
 export function QuizScreen({ onComplete, onBack }: QuizScreenProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<DeveloperType[]>([]);
+  const [answers, setAnswers] = useState<LanguageType[][]>([]);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const question = questions[currentQuestion];
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
-  const handleSelect = (optionIndex: number, type: DeveloperType) => {
+  // Get unique parts for section indicator
+  const parts = [...new Set(questions.map((q) => q.part))];
+  const currentPartIndex = parts.indexOf(question.part);
+
+  const handleSelect = (optionIndex: number, languages: LanguageType[]) => {
     if (isAnimating) return;
-    
+
     setSelectedOption(optionIndex);
     setIsAnimating(true);
 
     setTimeout(() => {
-      const newAnswers = [...answers, type];
+      const newAnswers = [...answers, languages];
       setAnswers(newAnswers);
 
       if (currentQuestion < questions.length - 1) {
@@ -53,12 +57,12 @@ export function QuizScreen({ onComplete, onBack }: QuizScreenProps) {
   return (
     <div className="min-h-screen flex flex-col p-6">
       {/* Header */}
-      <div className="flex items-center gap-4 mb-6">
+      <div className="flex items-center gap-4 mb-4">
         <Button
           variant="ghost"
           size="icon"
           onClick={handlePrevious}
-          className="rounded-full"
+          className="rounded-full shrink-0"
         >
           <ArrowLeft className="w-5 h-5" />
         </Button>
@@ -70,33 +74,53 @@ export function QuizScreen({ onComplete, onBack }: QuizScreenProps) {
             />
           </div>
         </div>
-        <span className="text-sm font-medium text-muted-foreground min-w-[3rem] text-right">
+        <span className="text-sm font-medium text-muted-foreground min-w-[3rem] text-right shrink-0">
           {currentQuestion + 1}/{questions.length}
         </span>
       </div>
 
+      {/* Part Indicator */}
+      <div className="flex justify-center gap-1.5 mb-6">
+        {parts.map((_, index) => (
+          <div
+            key={index}
+            className={cn(
+              "h-1.5 rounded-full transition-all duration-300",
+              index === currentPartIndex
+                ? "w-6 bg-primary"
+                : index < currentPartIndex
+                  ? "w-3 bg-primary/50"
+                  : "w-3 bg-secondary"
+            )}
+          />
+        ))}
+      </div>
+
       {/* Question */}
       <div className="flex-1 flex flex-col justify-center max-w-lg mx-auto w-full">
-        <div className="mb-2">
-          <span className="text-sm font-medium text-primary">
-            Q{question.id}
+        <div className="mb-3">
+          <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+            {question.part}
           </span>
+        </div>
+        <div className="mb-2">
+          <span className="text-sm font-bold text-primary">Q{question.id}.</span>
         </div>
         <h2 className="text-xl md:text-2xl font-bold text-foreground mb-8 text-balance leading-relaxed">
           {question.question}
         </h2>
 
-        {/* Options */}
-        <div className="space-y-3">
+        {/* Options - A and B */}
+        <div className="space-y-4">
           {question.options.map((option, index) => (
             <button
               key={index}
-              onClick={() => handleSelect(index, option.type)}
+              onClick={() => handleSelect(index, option.languages)}
               disabled={isAnimating}
               className={cn(
-                "w-full p-4 rounded-2xl text-left transition-all duration-200",
+                "w-full p-5 rounded-2xl text-left transition-all duration-200",
                 "border-2 hover:border-primary hover:bg-primary/5",
-                "flex items-center justify-between gap-4",
+                "flex items-start gap-4",
                 "group disabled:cursor-not-allowed",
                 selectedOption === index
                   ? "border-primary bg-primary/10 scale-[0.98]"
@@ -105,7 +129,17 @@ export function QuizScreen({ onComplete, onBack }: QuizScreenProps) {
             >
               <span
                 className={cn(
-                  "font-medium transition-colors",
+                  "shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors",
+                  selectedOption === index
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-secondary text-secondary-foreground group-hover:bg-primary group-hover:text-primary-foreground"
+                )}
+              >
+                {index === 0 ? "A" : "B"}
+              </span>
+              <span
+                className={cn(
+                  "font-medium transition-colors leading-relaxed pt-1",
                   selectedOption === index
                     ? "text-primary"
                     : "text-foreground group-hover:text-primary"
@@ -113,14 +147,6 @@ export function QuizScreen({ onComplete, onBack }: QuizScreenProps) {
               >
                 {option.text}
               </span>
-              <ChevronRight
-                className={cn(
-                  "w-5 h-5 transition-all",
-                  selectedOption === index
-                    ? "text-primary translate-x-1"
-                    : "text-muted-foreground group-hover:text-primary group-hover:translate-x-1"
-                )}
-              />
             </button>
           ))}
         </div>
@@ -128,9 +154,7 @@ export function QuizScreen({ onComplete, onBack }: QuizScreenProps) {
 
       {/* Footer hint */}
       <div className="text-center mt-6">
-        <p className="text-sm text-muted-foreground">
-          직감적으로 선택해 주세요
-        </p>
+        <p className="text-sm text-muted-foreground">직감적으로 선택해 주세요</p>
       </div>
     </div>
   );

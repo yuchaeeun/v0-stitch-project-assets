@@ -5,20 +5,20 @@ import { HomeScreen } from "@/components/home-screen";
 import { QuizScreen } from "@/components/quiz-screen";
 import { LoadingScreen } from "@/components/loading-screen";
 import { ResultScreen } from "@/components/result-screen";
-import { calculateResult, type DeveloperType } from "@/lib/quiz-data";
+import { calculateResult, type LanguageType } from "@/lib/quiz-data";
 
 type Screen = "home" | "quiz" | "loading" | "result";
 
 export default function DeveloperIdealTypeTest() {
   const [currentScreen, setCurrentScreen] = useState<Screen>("home");
-  const [answers, setAnswers] = useState<DeveloperType[]>([]);
-  const [result, setResult] = useState<DeveloperType | null>(null);
+  const [answers, setAnswers] = useState<LanguageType[][]>([]);
+  const [result, setResult] = useState<LanguageType | null>(null);
 
   const handleStart = useCallback(() => {
     setCurrentScreen("quiz");
   }, []);
 
-  const handleQuizComplete = useCallback((quizAnswers: DeveloperType[]) => {
+  const handleQuizComplete = useCallback((quizAnswers: LanguageType[][]) => {
     setAnswers(quizAnswers);
     setCurrentScreen("loading");
   }, []);

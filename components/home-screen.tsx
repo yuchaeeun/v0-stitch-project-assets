@@ -39,25 +39,25 @@ export function HomeScreen({ onStart }: HomeScreenProps) {
 
         {/* Description */}
         <p className="text-muted-foreground mb-8 leading-relaxed">
-          당신에게 딱 맞는 개발자 유형은?
+          당신에게 딱 맞는 프로그래밍 언어 이상형은?
           <br />
-          8개의 질문으로 알아보세요!
+          21개의 질문으로 알아보세요!
         </p>
 
         {/* Stats */}
         <div className="flex gap-6 mb-10">
           <div className="text-center">
-            <div className="text-2xl font-bold text-primary">8</div>
+            <div className="text-2xl font-bold text-primary">21</div>
             <div className="text-sm text-muted-foreground">질문</div>
           </div>
           <div className="w-px bg-border" />
           <div className="text-center">
-            <div className="text-2xl font-bold text-primary">2분</div>
+            <div className="text-2xl font-bold text-primary">5분</div>
             <div className="text-sm text-muted-foreground">소요시간</div>
           </div>
           <div className="w-px bg-border" />
           <div className="text-center">
-            <div className="text-2xl font-bold text-primary">6</div>
+            <div className="text-2xl font-bold text-primary">9</div>
             <div className="text-sm text-muted-foreground">유형</div>
           </div>
         </div>

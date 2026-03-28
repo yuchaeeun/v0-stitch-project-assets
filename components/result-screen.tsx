@@ -85,7 +85,7 @@ const colorMap: Record<string, string> = {
 };
 
 export function ResultScreen({ resultType, onRestart }: ResultScreenProps) {
-  const result: LanguageResult = results[resultType];
+  const result: LanguageResult = results[resultType] || results["python"];
   const gradientClass = colorMap[result.color] || "bg-gradient-to-br from-primary to-accent";
 
   const handleShare = async () => {

@@ -4,69 +4,69 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.98 0.01 280);
-  --foreground: oklch(0.2 0.02 280);
+  --background: oklch(0.98 0.02 350);
+  --foreground: oklch(0.25 0.03 350);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.02 280);
+  --card-foreground: oklch(0.25 0.03 350);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.02 280);
-  --primary: oklch(0.55 0.25 280);
+  --popover-foreground: oklch(0.25 0.03 350);
+  --primary: oklch(0.6 0.22 350);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.03 280);
-  --secondary-foreground: oklch(0.3 0.05 280);
-  --muted: oklch(0.94 0.02 280);
-  --muted-foreground: oklch(0.5 0.03 280);
-  --accent: oklch(0.7 0.2 330);
+  --secondary: oklch(0.96 0.02 350);
+  --secondary-foreground: oklch(0.35 0.05 350);
+  --muted: oklch(0.95 0.015 350);
+  --muted-foreground: oklch(0.5 0.03 350);
+  --accent: oklch(0.75 0.15 20);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9 0.02 280);
-  --input: oklch(0.95 0.01 280);
-  --ring: oklch(0.55 0.25 280);
-  --chart-1: oklch(0.55 0.25 280);
-  --chart-2: oklch(0.7 0.2 330);
-  --chart-3: oklch(0.6 0.15 200);
-  --chart-4: oklch(0.75 0.15 80);
-  --chart-5: oklch(0.65 0.2 150);
+  --border: oklch(0.92 0.02 350);
+  --input: oklch(0.96 0.01 350);
+  --ring: oklch(0.6 0.22 350);
+  --chart-1: oklch(0.6 0.22 350);
+  --chart-2: oklch(0.75 0.15 20);
+  --chart-3: oklch(0.65 0.18 330);
+  --chart-4: oklch(0.8 0.12 10);
+  --chart-5: oklch(0.55 0.2 340);
   --radius: 1rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.55 0.25 280);
+  --sidebar-primary: oklch(0.6 0.22 350);
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent: oklch(0.97 0.01 350);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
 
 .dark {
-  --background: oklch(0.15 0.02 280);
-  --foreground: oklch(0.95 0.01 280);
-  --card: oklch(0.2 0.02 280);
-  --card-foreground: oklch(0.95 0.01 280);
-  --popover: oklch(0.2 0.02 280);
-  --popover-foreground: oklch(0.95 0.01 280);
-  --primary: oklch(0.65 0.25 280);
+  --background: oklch(0.15 0.02 350);
+  --foreground: oklch(0.95 0.01 350);
+  --card: oklch(0.2 0.02 350);
+  --card-foreground: oklch(0.95 0.01 350);
+  --popover: oklch(0.2 0.02 350);
+  --popover-foreground: oklch(0.95 0.01 350);
+  --primary: oklch(0.65 0.22 350);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.25 0.03 280);
-  --secondary-foreground: oklch(0.9 0.02 280);
-  --muted: oklch(0.25 0.02 280);
-  --muted-foreground: oklch(0.65 0.02 280);
-  --accent: oklch(0.7 0.2 330);
+  --secondary: oklch(0.25 0.03 350);
+  --secondary-foreground: oklch(0.9 0.02 350);
+  --muted: oklch(0.25 0.02 350);
+  --muted-foreground: oklch(0.65 0.02 350);
+  --accent: oklch(0.75 0.15 20);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.3 0.02 280);
-  --input: oklch(0.25 0.02 280);
-  --ring: oklch(0.65 0.25 280);
-  --chart-1: oklch(0.65 0.25 280);
-  --chart-2: oklch(0.7 0.2 330);
-  --chart-3: oklch(0.6 0.15 200);
-  --chart-4: oklch(0.75 0.15 80);
-  --chart-5: oklch(0.65 0.2 150);
+  --border: oklch(0.3 0.02 350);
+  --input: oklch(0.25 0.02 350);
+  --ring: oklch(0.65 0.22 350);
+  --chart-1: oklch(0.65 0.22 350);
+  --chart-2: oklch(0.75 0.15 20);
+  --chart-3: oklch(0.65 0.18 330);
+  --chart-4: oklch(0.8 0.12 10);
+  --chart-5: oklch(0.55 0.2 340);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.65 0.25 280);
+  --sidebar-primary: oklch(0.65 0.22 350);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
@@ -122,4 +122,25 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+.animate-float {
+  animation: float linear infinite;
 }
